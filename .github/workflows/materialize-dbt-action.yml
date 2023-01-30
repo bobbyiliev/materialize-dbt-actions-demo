@@ -8,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 1
     - name: Materialize dbt action
       uses: bobbyiliev/materialize-dbt-action@main
       with:
