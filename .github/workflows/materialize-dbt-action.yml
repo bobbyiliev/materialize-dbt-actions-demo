@@ -8,12 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 1
-      - run: |
-          ls -lah
-          pwd
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Materialize dbt action
       uses: bobbyiliev/materialize-dbt-action@main
       with:
