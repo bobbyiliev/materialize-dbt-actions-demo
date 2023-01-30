@@ -1,0 +1,27 @@
+name: Materialize dbt action
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Materialize dbt action
+      uses: bobbyiliev/materialize-dbt-action@main
+      with:
+        dbt_command: "dbt run"
+      env:
+        MZ_PASS: ${{ secrets.MZ_PASS }}
+        MZ_USER: ${{ secrets.MZ_USER }}
+        MZ_HOST: ${{ secrets.MZ_HOST }}
+        MZ_PORT: 6875
+        MZ_DATABASE: materialize
+        MZ_SCHEMA: public
+        MZ_CLUSTER: default
+        DBT_PROJECT_DIR: test
+
